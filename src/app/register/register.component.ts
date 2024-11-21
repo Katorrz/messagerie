@@ -16,7 +16,7 @@ export class RegisterComponent {
   userExistsMessage = '';
 
   constructor() {
-    this.loadUsers(); // Charger les utilisateurs depuis le Session Storage au démarrage
+    this.loadUsers(); 
   }
 
   addUser() {
@@ -54,9 +54,8 @@ export class RegisterComponent {
           (user: any) => new User(user.nom, user.password)
         );
       } else {
-        // Si aucun utilisateur n'est stocké, initialiser avec des utilisateurs par défaut
         this.users = [new User('user1', 'pass1'), new User('user2', 'pass2')];
-        this.saveUsers(); // Sauvegarder les utilisateurs par défaut
+        this.saveUsers(); // Utilisateurs de test par défaut, toujouts login
       }
     }
   }

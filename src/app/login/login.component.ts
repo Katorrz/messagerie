@@ -5,15 +5,13 @@ import { NgFor } from '@angular/common';
 import { NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
-
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [FormsModule, NgFor, NgIf, RouterLink],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
-
 export class LoginComponent {
   title = 'Login';
   loggedInMessage = '';
@@ -58,13 +56,17 @@ export class LoginComponent {
     const storedUsers = sessionStorage.getItem('users');
     if (storedUsers) {
       const users: User[] = JSON.parse(storedUsers);
-      const userFound = users.some(
+      const userFound = users.find(
         (u) =>
           u.nom === this.loginUser.nom && u.password === this.loginUser.password
       );
 
       if (userFound) {
+        // Enregistrer l'utilisateur connecté dans le sessionStorage
+        sessionStorage.setItem('currentUser', JSON.stringify(userFound));
+
         this.loggedInMessage = 'Connexion réussie ! Bienvenue ' + this.loginUser.nom;
+        // Optionnel : Redirection vers une autre page ou affichage du chat
       } else {
         this.loggedInMessage = 'Nom d’utilisateur ou mot de passe incorrect.';
       }

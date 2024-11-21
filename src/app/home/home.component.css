@@ -1,0 +1,33 @@
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Corps de la page */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+
+  
+
+  .text {
+    text-align: center;
+    margin-top: 200px;
+    padding: 100px 20px;
+  }
+  
+  .text h1 {
+    font-size: 5em;
+    margin-bottom: 20px;
+  }
+  
+  .text p {
+    font-size: 2em;
+    margin-bottom: 30px;
+  }
+
+  

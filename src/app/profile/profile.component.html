@@ -1,1 +1,32 @@
-<p>profile works!</p>
+<div class="profile-container">
+    <h2>Profil de l'utilisateur</h2>
+  
+    <!-- Formulaire pour changer le nom -->
+    <div class="change-name">
+      <h3>Changer le nom</h3>
+      <input type="text" [(ngModel)]="newName" placeholder="Nouveau nom" />
+      <button (click)="changeName()">Mettre à jour le nom</button>
+    </div>
+  
+    <!-- Formulaire pour changer le mot de passe -->
+    <div class="change-password">
+      <h3>Changer le mot de passe</h3>
+      <input
+        type="password"
+        [(ngModel)]="currentPassword"
+        placeholder="Mot de passe actuel"
+      />
+      <input
+        type="password"
+        [(ngModel)]="newPassword"
+        placeholder="Nouveau mot de passe"
+      />
+      <button (click)="changePassword()">Mettre à jour le mot de passe</button>
+    </div>
+  
+    <!-- Message de confirmation ou d'erreur -->
+    <div class="message" *ngIf="message">
+      <p>{{ message }}</p>
+    </div>
+  </div>
+  

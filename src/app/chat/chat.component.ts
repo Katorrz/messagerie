@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService, Message } from '../chat.service';
 import { FormsModule } from '@angular/forms';
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { User } from '../../objects/users';
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [FormsModule, NgFor, NgIf],
+  imports: [FormsModule, NgFor, NgIf, CommonModule],
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css'],
 })
@@ -51,13 +51,14 @@ export class ChatComponent implements OnInit {
     if (this.isSessionStorageAvailable()) {
       const storedCurrentUser = sessionStorage.getItem('currentUser');
       if (storedCurrentUser) {
-        this.currentUser = storedCurrentUser;
+        const user: User = JSON.parse(storedCurrentUser);
+        this.currentUser = user.nom; // Utiliser le nom de l'utilisateur comme identifiant
       } else {
         console.warn('Aucun utilisateur courant défini.');
-        this.currentUser = 'defaultUser'; // Valeur par défaut
+        this.currentUser = 'defaultUser'; 
       }
     } else {
-      this.currentUser = 'defaultUser'; // Valeur par défaut si sessionStorage indisponible
+      this.currentUser = 'defaultUser';
     }
   }
 
@@ -65,13 +66,9 @@ export class ChatComponent implements OnInit {
     this.selectedUser = user;
     this.loadMessages();
   }
-
   async loadMessages(): Promise<void> {
-    if (this.selectedUser) {
-      this.messages = await this.chatService.getMessagesBetweenUsers(
-        this.currentUser,
-        this.selectedUser
-      );
+    if (this.selectedUser && this.currentUser) {
+      this.messages = await this.chatService.getMessagesBetweenUsers(this.currentUser, this.selectedUser);
     }
   }
 

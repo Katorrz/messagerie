@@ -1,0 +1,48 @@
+.profile-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    margin-top: 20px;
+    font-size: 1.2em;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #337ccf;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #337ccf;
+  }
+  
+  .message {
+    margin-top: 20px;
+    text-align: center;
+    color: green;
+  }
+  
+  .message p {
+    font-weight: bold;
+  }
+  
