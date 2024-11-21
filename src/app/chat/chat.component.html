@@ -1,1 +1,26 @@
-<p>chat works!</p>
+<div class="chat-container">
+    <div class="users">
+      <h3>Utilisateurs</h3>
+      <ul>
+        <li *ngFor="let user of users" (click)="selectUser(user)" [class.selected]="user === selectedUser">
+          {{ user }}
+        </li>
+      </ul>
+    </div>
+  
+    <div class="chat">
+      <h3>Chat avec {{ selectedUser || '...' }}</h3>
+      <div class="messages">
+        <div *ngFor="let message of messages" [class.sent]="message.sender === currentUser">
+          <strong>{{ message.sender }}</strong>: {{ message.content }}
+          <small>{{ message.timestamp }}</small>
+        </div>
+      </div>
+  
+      <div class="message-input" *ngIf="selectedUser">
+        <input [(ngModel)]="newMessage" placeholder="Tapez votre message..." />
+        <button (click)="sendMessage()">Envoyer</button>
+      </div>
+    </div>
+  </div>
+  
