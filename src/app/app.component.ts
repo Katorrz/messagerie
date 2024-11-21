@@ -1,19 +1,26 @@
 import { Component } from '@angular/core';
-import { HomeComponent } from './home/home.component';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { ChannelsComponent } from './channels/channels.component';
-import { ProfileComponent } from './profile/profile.component';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
+import { ChannelsComponent } from './channels/channels.component';
 import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,RouterModule,HomeComponent,ChannelsComponent,ProfileComponent,LoginComponent,RegisterComponent],
+  imports: [RouterOutlet,HomeComponent,NotFoundComponent,RouterModule,LoginComponent,ChannelsComponent,RegisterComponent,ProfileComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'messagerie';
+
+  public deleteAll(){
+    sessionStorage.clear();
+  }
+
 }
+

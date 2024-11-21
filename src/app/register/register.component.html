@@ -1,1 +1,47 @@
-<p>register works!</p>
+<div class="container mt-5">
+  
+    <div class="mb-3">
+      <h2>Register</h2>
+      <div>
+        <label for="nom" class="form-label">Nom : </label>
+        <input
+          id="nom"
+          type="text"
+          class="form-control"
+          [(ngModel)]="newUser.nom"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Mot de passe : </label>
+        <input
+          id="password"
+          type="password"
+          class="form-control"
+          [(ngModel)]="newUser.password"
+        />
+      </div>
+      <button class="btn btn-primary mt-3" (click)="addUser()">Ajouter</button>
+      <p class="mt-2" [class.text-danger]="userExistsMessage === 'L’utilisateur existe déjà.'">
+        {{ userExistsMessage }}
+      </p>
+    </div>
+  
+    <div class="mt-5">
+      <h2>Liste des utilisateurs</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Mot de passe</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.nom }}</td>
+            <td>{{ user.password }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

@@ -1,1 +1,38 @@
-<p>login works!</p>
+<div class="container mt-5">
+    <h2>{{ title }}</h2>
+  
+    <form (submit)="login(); $event.preventDefault()">
+      <div class="mb-3">
+        <label for="username" class="form-label">Nom :</label>
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          [(ngModel)]="loginUser.nom"
+          name="username"
+          required
+        />
+      </div>
+  
+      <div class="mb-3">
+        <label for="password" class="form-label">Mot de passe :</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          [(ngModel)]="loginUser.password"
+          name="password"
+          required
+        />
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Se connecter</button>
+    </form>
+    <br>
+    <a class="nav-link active" [routerLink]="['/register']">Register</a>
+  
+    <p class="mt-3" *ngIf="loggedInMessage" [class.text-success]="loggedInMessage.includes('réussie')" [class.text-danger]="!loggedInMessage.includes('réussie')">
+      {{ loggedInMessage }}
+    </p>
+  </div>
+  
