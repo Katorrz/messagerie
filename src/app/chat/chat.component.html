@@ -1,1 +1,78 @@
-<p>chat works!</p>
+<div class="chat-container">
+    <!-- Liste des messages -->
+    <div class="messages-container">
+      <div *ngFor="let message of messages" class="message">
+        <p>{{ message.content }}</p>
+        <span class="timestamp">{{ message.timestamp?.toDate() }}</span>
+      </div>
+    </div>
+  
+    <!-- Formulaire pour envoyer un message -->
+    <div class="send-message">
+      <input 
+        [(ngModel)]="newMessage" 
+        placeholder="Tapez un message..." 
+        (keydown.enter)="sendMessage(newMessage)"
+        [disabled]="!newMessage"
+        class="message-input"
+      />
+      <button (click)="sendMessage(newMessage)" [disabled]="!newMessage" class="send-button">Envoyer</button>
+    </div>
+  </div>
+  
+  <!-- Style basique -->
+  <style>
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 20px;
+    }
+  
+    .messages-container {
+      flex-grow: 1;
+      overflow-y: auto;
+      margin-bottom: 20px;
+    }
+  
+    .message {
+      background-color: #f1f1f1;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      padding: 10px;
+      max-width: 80%;
+    }
+  
+    .timestamp {
+      font-size: 0.8em;
+      color: #888;
+      margin-top: 5px;
+    }
+  
+    .send-message {
+      display: flex;
+      justify-content: space-between;
+    }
+  
+    .message-input {
+      width: 80%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  
+    .send-button {
+      padding: 10px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
+    .send-button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  </style>
+  
